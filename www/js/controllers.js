@@ -1,8 +1,9 @@
 angular.module('starter.controllers', [])
+//each of these controllers appends to each route that we have
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('ChatsCtrl', function($scope, Chats) {
+.controller('TasksCtrl', function($scope, Tasks) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -11,14 +12,17 @@ angular.module('starter.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
+//redends all of the task in the array
+  $scope.tasks = Tasks.all();
+
+  //remove the tasks from the array
+  $scope.remove = function(task) {
+    Tasks.remove(task);
   };
 })
-
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+//get taskid for that specific task
+.controller('TaskDetailCtrl', function($scope, $stateParams, Tasks) {
+  $scope.task = Tasks.get($stateParams.taskId);
 })
 
 .controller('AccountCtrl', function($scope) {
